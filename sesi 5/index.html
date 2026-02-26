@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEPTU Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+ <script src="user.js"></script>
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="bg-wrap">
+    <div class="bg-gradient"></div>
+    <div class="grid-lines"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- AUTH CARD -->
+  <div class="card" id="authCard">
+
+    <!-- ORB -->
+    <div class="orb-wrap">
+      <div class="orb"></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('login')">Sign In</div>
+      <div class="tab" onclick="switchTab('register')">Register</div>
+    </div>
+
+    <!-- FORM AREA -->
+    <div class="form-area">
+
+      <!-- LOGIN -->
+      <div class="view active" id="view-login">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="loginUser" placeholder="masukkan username"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="loginPass" placeholder="••••••••"/>
+            <button class="eye-btn" onclick="toggleEye('loginPass',this)">👁</button>
+          </div>
+        </div>
+        <div class="forgot" onclick="showToast('Hubungi admin untuk reset password','info')">
+          FORGOT YOUR PASSWORD?
+        </div>
+        <button class="btn-primary" onclick="doLogin()">Sign In</button>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="view" id="view-register">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="regUser" placeholder="pilih username unik"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="regPass" placeholder="min. 6 karakter"/>
+            <button class="eye-btn" onclick="toggleEye('regPass',this)">👁</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Konfirmasi Password</label>
+          <input type="password" id="regConfirm" placeholder="ulangi password"/>
+        </div>
+        <div class="field">
+          <label>Role</label>
+          <select id="regRole">
+            <option value="user">User — Akses Standar</option>
+            <option value="vip">VIP — Akses Premium</option>
+            <option value="moderator">Moderator — Kelola Konten</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="doRegister()">Create Account</button>
+      </div>
+
+    </div>
+
+    <div class="version">NEPTU PORTAL </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="dash-card">
+      <div class="dash-header">
+        <div class="dash-header-top">
+          <div class="avatar" id="dashAvatar"></div>
+          <div>
+            <div class="dash-name" id="dashName"></div>
+            <div class="role-badge" id="dashBadge"></div>
+          </div>
+        </div>
+        <div class="dash-stats">
+          <div class="stat">
+            <div class="stat-val" id="statRole" style="font-size:1rem"></div>
+            <div class="stat-label">Role</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val" id="statAccess"></div>
+            <div class="stat-label">Access Level</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val" style="color:var(--green)">✓</div>
+            <div class="stat-label">Status</div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-body">
+        <div class="perm-title">// Permissions</div>
+        <div class="perms" id="dashPerms"></div>
+        <button class="btn-secondary" onclick="doLogout()">⏻ &nbsp;Sign Out</button>
+      </div>
+      <div class="version">NEPTU PORTAL — VERSION 2.0.0</div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIF -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>
